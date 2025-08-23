@@ -1,1 +1,12 @@
-<p>olha a lista!</p>
+<mat-list>
+  @for (game of Games; track $index; let i = $index) {
+  <div>
+    <button (click)="chooseGame(game)" matButton>
+      <mat-list-item>{{ game }}</mat-list-item>
+    </button>
+    @if (i < Games.length - 1) {
+    <mat-divider></mat-divider>
+    }
+  </div>
+  }
+</mat-list>
