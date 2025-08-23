@@ -1,10 +1,10 @@
 <mat-list>
-  @for (game of Games; track $index; let i = $index) {
+  @for (game of games; track $index; let i = $index) {
   <div>
-    <button (click)="chooseGame(game)" matButton>
-      <mat-list-item>{{ game }}</mat-list-item>
+    <button [routerLink]="['summary', game.id]" matButton>
+      <mat-list-item>{{ game.name }}</mat-list-item>
     </button>
-    @if (i < Games.length - 1) {
+    @if (i < games.length - 1) {
     <mat-divider></mat-divider>
     }
   </div>
