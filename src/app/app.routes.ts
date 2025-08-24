@@ -5,6 +5,7 @@ import { Headsup } from './pages/game/headsup/headsup';
 
 export const routes: Routes = [
     {path: "", component: Home},
+    {path: "partyhub", component: Home},
     {path: "summary/:gameId", component: GameSummary, pathMatch: 'full'},
     {path: "headsup", component: Headsup},
     {path: "tictactoe", redirectTo: 'https://joga-da-velha.web.app'} //not working
