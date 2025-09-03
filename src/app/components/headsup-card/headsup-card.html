@@ -1,0 +1,13 @@
+@if(isLandscaped){
+  <p>Eu sou...</p>
+<div>
+  <h1>{{ name }}</h1>
+  @if (tip) {
+  <h2>
+    <em>({{ tip }})</em>
+  </h2>
+  }
+</div>
+} @else {
+  <h1>Não olhe!</h1>
+}
