@@ -3,7 +3,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatListModule } from '@angular/material/list';
 import { RouterLink } from '@angular/router';
-import { Game } from '../../models/Game';
+import { GameModel } from '../../models/GameModel';
+import { GameService } from '../../sevices/game-sevice';
 
 @Component({
   selector: 'app-games-list',
@@ -12,9 +13,5 @@ import { Game } from '../../models/Game';
   styleUrl: './games-list.css'
 })
 export class GamesList {
-  games: Game[] = [
-    new Game(1, "Quem sou eu?"),
-    new Game(2, "Verdade ou desafio"),
-    new Game(3, "Jogo da velha"),
-  ];
+  games: GameModel[] = new GameService().getAllGames();
 }

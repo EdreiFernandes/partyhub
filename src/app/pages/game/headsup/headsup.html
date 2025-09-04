@@ -1,1 +1,9 @@
-<p>headsup is game id number 1</p>
+<div>
+  @if (!name()) {
+  <button matButton="elevated" (click)="openDialog()">
+    Definir personagem
+  </button>
+  } @else {
+    <app-headsup-card [name]="name()" [tip]="tip()"></app-headsup-card>
+  }
+</div>

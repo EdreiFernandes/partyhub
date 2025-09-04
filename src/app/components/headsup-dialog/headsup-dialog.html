@@ -1,0 +1,17 @@
+<h2 mat-dialog-title>Que sou eu?</h2>
+<mat-dialog-content>
+  <p>Insira um personagem para seu amigo?</p>
+  <mat-form-field>
+    <mat-label>Nome do personagem</mat-label>
+    <input matInput [(ngModel)]="model().name" />
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Dica</mat-label>
+    <input matInput [(ngModel)]="model().tip" />
+  </mat-form-field>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button matButton (click)="onNoClick()">No Thanks</button>
+  <button matButton [mat-dialog-close]="model()" cdkFocusInitial>Ok</button>
+</mat-dialog-actions>
