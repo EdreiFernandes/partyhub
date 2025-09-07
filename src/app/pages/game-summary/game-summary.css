@@ -1,0 +1,13 @@
+.game-summary {
+    text-align: center;
+}
+
+p {
+    padding-inline: 2rem;
+    padding-bottom: 2rem;
+    padding-top: 1rem;
+}
+
+.back-button {
+    margin-right: 2rem;
+}
