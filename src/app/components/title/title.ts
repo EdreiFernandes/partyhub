@@ -7,7 +7,6 @@ import { Component, Input } from '@angular/core';
   styleUrl: './title.css'
 })
 export class Title {
-  
   @Input()
   title: String = "";
 }
