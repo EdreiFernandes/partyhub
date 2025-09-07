@@ -1,9 +1,11 @@
 <div>
   @if (!name()) {
-  <button matButton="elevated" (click)="openDialog()">
-    Definir personagem
-  </button>
+  <div class="set-character-button">
+    <button matButton="elevated" (click)="openDialog()">
+      Definir personagem
+    </button>
+  </div>
   } @else {
-    <app-headsup-card [name]="name()" [tip]="tip()"></app-headsup-card>
+  <app-headsup-card [name]="name()" [tip]="tip()"></app-headsup-card>
   }
 </div>
