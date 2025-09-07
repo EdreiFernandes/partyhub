@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatListModule } from '@angular/material/list';
@@ -13,5 +13,7 @@ import { GameService } from '../../sevices/game-sevice';
   styleUrl: './games-list.css'
 })
 export class GamesList {
-  games: GameModel[] = new GameService().getAllGames();
+  gameService = inject(GameService);
+  
+  games: GameModel[] = this.gameService.getAllGames();
 }
