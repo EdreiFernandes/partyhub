@@ -8,14 +8,12 @@ import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
   styleUrl: './tictactoe.css'
 })
 export class Tictactoe implements OnInit {
-  @Input()
   url: SafeResourceUrl = "";
-
-  url2: string = 'https://joga-da-velha.web.app';
 
   constructor(public sanitizer: DomSanitizer){}
 
   ngOnInit(): void {
-    this.url = this.sanitizer.bypassSecurityTrustResourceUrl(this.url2);
+    const externalUrl = 'https://joga-da-velha.web.app';
+    this.url = this.sanitizer.bypassSecurityTrustResourceUrl(externalUrl);
   }
 }

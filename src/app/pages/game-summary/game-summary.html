@@ -1,7 +1,11 @@
-<app-title title="Game Name {{id}}"></app-title>
-<div id="how-to-play">
+<app-title title="{{ game!.name }}"></app-title>
+<div class="game-summary">
+  <div id="how-to-play">
     <h2>Como jogar?</h2>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente voluptatem perferendis ipsa, iste optio minima inventore esse, sint laborum ipsam aut. Ipsam, soluta repellendus. Vel in quas ipsam facere molestias.</p>
+    <p>{{ game!.howToPlay }}</p>
+  </div>
+  <div id="action-buttons">
+    <button matButton="outlined" class="back-button" routerLink="/">Voltar</button>
+    <button matButton="filled" routerLink="{{game!.link}}">Jogar</button>
+  </div>
 </div>
-<button matButton="outlined" routerLink="/">Voltar</button>
-<button matButton="filled" routerLink="/headsup">Jogar</button>

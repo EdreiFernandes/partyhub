@@ -1,13 +1,20 @@
 @if(isLandscaped){
-  <p>Eu sou...</p>
-<div>
-  <h1>{{ name }}</h1>
-  @if (tip) {
-  <h2>
-    <em>({{ tip }})</em>
-  </h2>
-  }
+<div class="card-content">
+  <div class="card-front">
+    <div>
+      <h1>{{ name }}</h1>
+      @if (tip) {
+      <h2>
+        <em>({{ tip }})</em>
+      </h2>
+      }
+    </div>
+  </div>
 </div>
 } @else {
-  <h1>Não olhe!</h1>
+<div class="card-content">
+  <div class="card-back">
+    <div class="losango"></div>
+  </div>
+</div>
 }
