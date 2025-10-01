@@ -4,6 +4,7 @@ import { GameModel } from "../models/GameModel";
 const games: GameModel[] = [
   new GameModel(1, 'Quem sou eu?', 'poem na testa e faz pergunta', '/headsup'),
   new GameModel(2, 'Jogo da velha', 'joga da veia', '/tictactoe'),
+  new GameModel(3, 'Dicionário', 'Tente enganar seus coleguinhas', '/dictionary'),
 ];
 
 @Injectable({
