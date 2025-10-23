@@ -3,8 +3,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatListModule } from '@angular/material/list';
 import { RouterLink } from '@angular/router';
-import { GameModel } from '../../models/GameModel';
-import { GameService } from '../../sevices/game-sevice';
+import { GameService } from '../../../sevices/game-sevice';
+import { GameModel } from '../../../models/GameModel';
 
 @Component({
   selector: 'app-games-list',
