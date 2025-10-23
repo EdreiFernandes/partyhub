@@ -4,8 +4,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatDialog } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import { HeadsupDialog } from '../../../components/headsup-dialog/headsup-dialog';
-import { HeadsupCard } from "../../../components/headsup-card/headsup-card";
+import { HeadsupDialog } from '../../../components/headsup/headsup-dialog/headsup-dialog';
+import { HeadsupCard } from "../../../components/headsup/headsup-card/headsup-card";
 
 @Component({
   selector: 'app-headsup',
