@@ -1,9 +1,19 @@
-<div>
+<div class="headsup-container">
   @if (!name()) {
-  <div class="set-character-button">
-    <button matButton="elevated" (click)="openDialog()">
-      Definir personagem
-    </button>
+  <div class="setup-section">
+    <div class="setup-card">
+      <div class="setup-header">
+        <mat-icon class="setup-icon">psychology</mat-icon>
+        <h2>Configurar Personagem</h2>
+      </div>
+      <div class="setup-content">
+        <p>Defina um personagem, celebridade ou objeto para o jogo "Quem sou eu?"</p>
+        <button matButton="filled" class="setup-button" (click)="openDialog()">
+          <mat-icon>add</mat-icon>
+          Definir Personagem
+        </button>
+      </div>
+    </div>
   </div>
   } @else {
   <app-headsup-card [name]="name()" [tip]="tip()"></app-headsup-card>

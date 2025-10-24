@@ -1,0 +1,54 @@
+<div class="card-container">
+  @if(isLandscaped){
+  <!-- FACE DA CARTA (Landscape) -->
+  <div class="card-content card-front">
+    <div class="card-inner">
+      <div class="card-header">
+        <div class="card-corner top-left"></div>
+        <div class="card-corner top-right"></div>
+        <div class="card-corner bottom-left"></div>
+        <div class="card-corner bottom-right"></div>
+      </div>
+      <div class="card-body">
+        <h1 class="character-name">{{ name }}</h1>
+        @if (tip) {
+        <div class="character-tip">
+          <span class="tip-label">Dica:</span>
+          <span class="tip-text">{{ tip }}</span>
+        </div>
+        }
+      </div>
+      <div class="card-footer">
+        <div class="card-suit">♠</div>
+        <div class="card-suit">♥</div>
+        <div class="card-suit">♦</div>
+        <div class="card-suit">♣</div>
+      </div>
+    </div>
+  </div>
+  } @else {
+  <!-- VERSO DA CARTA (Portrait) -->
+  <div class="card-content card-back">
+    <div class="card-inner">
+      <div class="back-pattern">
+        <div class="pattern-diamond"></div>
+        <div class="pattern-diamond"></div>
+        <div class="pattern-diamond"></div>
+        <div class="pattern-diamond"></div>
+        <div class="pattern-diamond"></div>
+        <div class="pattern-diamond"></div>
+        <div class="pattern-diamond"></div>
+        <div class="pattern-diamond"></div>
+        <div class="pattern-diamond"></div>
+      </div>
+      <div class="back-center">
+        <div class="center-logo">
+          <mat-icon>psychology</mat-icon>
+        </div>
+        <h2>Quem sou eu?</h2>
+        <p>Gire o dispositivo para ver o personagem</p>
+      </div>
+    </div>
+  </div>
+  }
+</div>
