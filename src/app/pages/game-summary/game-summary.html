@@ -1,11 +1,18 @@
 <app-title title="{{ game!.name }}"></app-title>
 <div class="game-summary">
-  <div id="how-to-play">
-    <h2>Como jogar?</h2>
-    <p>{{ game!.howToPlay }}</p>
+  <div class="tutorial-container">
+    <div class="tutorial-content">
+      <pre class="tutorial-text">{{ game!.howToPlay }}</pre>
+    </div>
   </div>
-  <div id="action-buttons">
-    <button matButton="outlined" class="back-button" routerLink="/">Voltar</button>
-    <button matButton="filled" routerLink="{{game!.link}}">Jogar</button>
+  <div class="action-buttons">
+    <button matButton="outlined" class="back-button" routerLink="/">
+      <mat-icon>arrow_back</mat-icon>
+      Voltar
+    </button>
+    <button matButton="filled" class="play-button" routerLink="{{game!.link}}">
+      <mat-icon>play_arrow</mat-icon>
+      Jogar Agora
+    </button>
   </div>
 </div>
