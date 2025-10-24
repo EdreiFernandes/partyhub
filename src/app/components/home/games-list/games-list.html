@@ -1,0 +1,22 @@
+<div class="games-grid">
+  @for (game of games; track $index; let i = $index) {
+  <div class="game-card" [routerLink]="['summary', game.id]">
+    <div class="card-header">
+      <div class="game-icon">
+        <mat-icon>{{ game.icon }}</mat-icon>
+      </div>
+      <div class="play-indicator">
+        <mat-icon>play_arrow</mat-icon>
+      </div>
+    </div>
+    <div class="card-content">
+      <h3 class="game-title">{{ game.name }}</h3>
+      <p class="game-description">{{ game.brief }}</p>
+    </div>
+    <div class="card-footer">
+      <span class="play-text">Jogar agora</span>
+      <mat-icon class="arrow-icon">arrow_forward</mat-icon>
+    </div>
+  </div>
+  }
+</div>

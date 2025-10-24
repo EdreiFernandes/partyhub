@@ -1,13 +1,14 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { Title } from '../../components/title/title';
 import { MatButton } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { GameModel } from '../../models/GameModel';
 import { GameService } from '../../sevices/game-sevice';
 
 @Component({
   selector: 'app-game-summary',
-  imports: [Title, MatButton, RouterLink],
+  imports: [Title, MatButton, MatIconModule, RouterLink],
   templateUrl: './game-summary.html',
   styleUrl: './game-summary.css',
 })
