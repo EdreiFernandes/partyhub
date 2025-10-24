@@ -1,8 +1,9 @@
 import { ChangeDetectorRef, Component, Input, OnInit } from '@angular/core';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-headsup-card',
-  imports: [],
+  imports: [MatIconModule],
   templateUrl: './headsup-card.html',
   styleUrl: './headsup-card.css'
 })

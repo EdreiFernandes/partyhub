@@ -1,17 +1,35 @@
-<h2 mat-dialog-title>Que sou eu?</h2>
-<mat-dialog-content>
-  <p>Insira um personagem para seu amigo?</p>
-  <mat-form-field>
-    <mat-label>Nome do personagem</mat-label>
-    <input matInput [(ngModel)]="model().name" />
-  </mat-form-field>
+<div class="dialog-container">
+  <div class="dialog-header">
+    <mat-icon class="dialog-icon">psychology</mat-icon>
+    <h2 mat-dialog-title>Configurar Personagem</h2>
+  </div>
+  
+  <mat-dialog-content class="dialog-content">
+    <p class="dialog-description">Defina um personagem, celebridade ou objeto para o jogo "Quem sou eu?"</p>
+    
+    <div class="form-fields">
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Nome do personagem</mat-label>
+        <input matInput [(ngModel)]="model().name" placeholder="Ex: Albert Einstein" />
+        <mat-icon matSuffix>person</mat-icon>
+      </mat-form-field>
 
-  <mat-form-field>
-    <mat-label>Dica</mat-label>
-    <input matInput [(ngModel)]="model().tip" />
-  </mat-form-field>
-</mat-dialog-content>
-<mat-dialog-actions>
-  <button matButton (click)="onNoClick()">No Thanks</button>
-  <button matButton [mat-dialog-close]="model()" cdkFocusInitial>Ok</button>
-</mat-dialog-actions>
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Dica (opcional)</mat-label>
+        <input matInput [(ngModel)]="model().tip" placeholder="Ex: Físico alemão" />
+        <mat-icon matSuffix>lightbulb</mat-icon>
+      </mat-form-field>
+    </div>
+  </mat-dialog-content>
+  
+  <mat-dialog-actions class="dialog-actions">
+    <button matButton class="cancel-button" (click)="onNoClick()">
+      <mat-icon>close</mat-icon>
+      Cancelar
+    </button>
+    <button matButton="filled" class="confirm-button" [mat-dialog-close]="model()" cdkFocusInitial>
+      <mat-icon>check</mat-icon>
+      Confirmar
+    </button>
+  </mat-dialog-actions>
+</div>
