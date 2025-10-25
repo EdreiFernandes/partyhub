@@ -14,4 +14,8 @@ import { Sidebar } from './components/sidebar/sidebar';
 })
 export class App {
   protected readonly title = signal('Party Hub');
+  
+  onDrawerToggle(isOpen: boolean) {
+    // Adicionar lógica adicional se necessário
+  }
 }
