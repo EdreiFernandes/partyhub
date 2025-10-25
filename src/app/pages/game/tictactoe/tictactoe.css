@@ -1,4 +1,27 @@
+:host {
+  display: block;
+  height: 100%;
+  width: 100%;
+  position: relative;
+}
+
 iframe {
-  width: 99%;
-  height: 90%;
+  width: 100%;
+  height: 100%;
+  border: none;
+  display: block;
+  background: white;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  iframe {
+    height: calc(100vh - 56px);
+  }
+}
+
+@media (max-width: 480px) {
+  iframe {
+    height: calc(100vh - 48px);
+  }
 }
