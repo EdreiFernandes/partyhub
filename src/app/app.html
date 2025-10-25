@@ -1,6 +1,6 @@
 <mat-drawer-container id="main" class="main-container" autosize>
-  <mat-drawer id="sidenav" #drawer class="sidenav" mode="side">
-    <app-sidebar></app-sidebar>
+  <mat-drawer id="sidenav" #drawer class="sidenav" mode="side" (openedChange)="onDrawerToggle($event)">
+    <app-sidebar [isOpen]="drawer.opened" (closeSidebar)="drawer.close()"></app-sidebar>
   </mat-drawer>
 
   <div id="page" class="sidenav-content">

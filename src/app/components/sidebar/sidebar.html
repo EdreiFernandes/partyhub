@@ -4,6 +4,14 @@
       <mat-icon class="logo-icon">sports_esports</mat-icon>
       <h2 class="logo-text">PartyHub</h2>
     </div>
+    <button 
+      mat-icon-button 
+      class="close-button mobile-only" 
+      (click)="onCloseSidebar()"
+      aria-label="Fechar menu"
+    >
+      <mat-icon>close</mat-icon>
+    </button>
   </div>
 
   <mat-divider class="sidebar-divider"></mat-divider>
@@ -11,14 +19,14 @@
   <nav class="sidebar-nav">
     <mat-list class="nav-list">
       <mat-list-item class="nav-item">
-        <button matButton class="nav-button" routerLink="/" routerLinkActive="active">
+        <button matButton class="nav-button" routerLink="/" routerLinkActive="active" (click)="onCloseSidebar()">
           <mat-icon class="nav-icon">home</mat-icon>
           <span class="nav-text">Início</span>
         </button>
       </mat-list-item>
 
       <mat-list-item class="nav-item">
-        <button matButton class="nav-button" routerLink="/settings" routerLinkActive="active">
+        <button matButton class="nav-button" routerLink="/settings" routerLinkActive="active" (click)="onCloseSidebar()">
           <mat-icon class="nav-icon">settings</mat-icon>
           <span class="nav-text">Configurações</span>
         </button>
