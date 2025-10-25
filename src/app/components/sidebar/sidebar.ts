@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
@@ -12,5 +12,10 @@ import { RouterLink } from '@angular/router';
   styleUrl: './sidebar.css'
 })
 export class Sidebar {
-  
+  @Input() isOpen: boolean = false;
+  @Output() closeSidebar = new EventEmitter<void>();
+
+  onCloseSidebar() {
+    this.closeSidebar.emit();
+  }
 }
