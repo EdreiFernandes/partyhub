@@ -4,11 +4,13 @@ import { GameSummary } from './pages/game-summary/game-summary';
 import { Headsup } from './pages/game/headsup/headsup';
 import { Tictactoe } from './pages/game/tictactoe/tictactoe';
 import { Dictionary } from './pages/game/dictionary/dictionary';
+import { Settings } from './pages/settings/settings';
 
 export const routes: Routes = [
     {path: "", component: Home},
     {path: "summary/:gameId", component: GameSummary, pathMatch: 'full'},
     {path: "headsup", component: Headsup},
     {path: "tictactoe", component: Tictactoe},
-    {path: "dictionary", component: Dictionary}
+    {path: "settings", component: Settings},
+    {path: "dictionary", component: Dictionary},
 ];

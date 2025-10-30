@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { GamesList } from '../../components/games-list/games-list';
+import { GamesList } from '../../components/home/games-list/games-list';
 import { Title } from "../../components/title/title";
 
 @Component({
@@ -8,6 +8,4 @@ import { Title } from "../../components/title/title";
   templateUrl: './home.html',
   styleUrl: './home.css'
 })
-export class Home {
-
-}
+export class Home {}
