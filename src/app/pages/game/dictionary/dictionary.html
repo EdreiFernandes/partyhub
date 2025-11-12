@@ -1,20 +1,11 @@
 <div class="example-container">
-  @switch (gameStage()) { @case (enum.SettingWord) {
-  <h2>Setting</h2>
-  <mat-form-field>
-    <mat-label>Quantidade de jogadores</mat-label>
-    <input
-      type="number"
-      matInput
-      [formControl]="playerQuantity"
-      (blur)="updateErrorMessagePlayerQuantity()"
-      required
-    />
-    @if (playerQuantity.invalid) {
-    <mat-error>{{ errorMessagePlayerQuantity() }}</mat-error>
+  @switch (gameStage()) { 
+    @case (enum.SettingPlayers) {
+      <app-players-list></app-players-list>
     }
-  </mat-form-field>
 
+
+  @case (enum.SettingWord) {
   <mat-form-field>
     <mat-label>Palavra do jogo</mat-label>
     <input
@@ -31,9 +22,6 @@
     >
       <mat-icon>autorenew</mat-icon>
     </button>
-    @if (playerQuantity.invalid) {
-    <mat-error>{{ errorMessageWord() }}</mat-error>
-    }
   </mat-form-field>
 
   } @case (enum.GivingMeaning) {
@@ -42,7 +30,7 @@
   <h2>Players Voting</h2>
   } @case (enum.ShowingResult) {
   <h1>
-    Jogando dicionario com {{ playerQuantity.value }} pessoas e com a palavra
+    Jogando dicionario com 8 pessoas e com a palavra
     {{ word.value }}
   </h1>
   <h2>{{ wordMeaning() }}</h2>

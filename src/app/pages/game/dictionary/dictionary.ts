@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component, signal, ViewChild } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import {
   FormControl,
@@ -11,6 +11,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { merge } from 'rxjs';
+import { PlayersList } from '../../../components/dictionary/players-list/players-list';
+import { DictionaryGameStage } from '../../../interfaces/dictionary-game-stage';
 
 export interface DictionaryData {
   playersQuantity: string;
@@ -18,6 +20,7 @@ export interface DictionaryData {
 }
 
 enum GameStage {
+  SettingPlayers,
   SettingWord,
   GivingMeaning,
   Voting,
@@ -33,43 +36,26 @@ enum GameStage {
     ReactiveFormsModule,
     MatButtonModule,
     MatIconModule,
+    PlayersList,
   ],
   templateUrl: './dictionary.html',
   styleUrl: './dictionary.css',
 })
 export class Dictionary {
-  readonly playerQuantity = new FormControl('', [
-    Validators.required,
-    Validators.min(3),
-  ]);
+  @ViewChild(PlayersList) playerListComponent!: DictionaryGameStage;
 
   readonly word = new FormControl('', [Validators.required]);
-  errorMessagePlayerQuantity = signal('');
   errorMessageWord = signal('');
   wordMeaning = signal('');
 
   enum = GameStage;
 
-  gameStage = signal(GameStage.SettingWord);
+  gameStage = signal(GameStage.SettingPlayers);
 
   constructor() {
-    merge(this.playerQuantity.statusChanges, this.playerQuantity.valueChanges)
-      .pipe(takeUntilDestroyed())
-      .subscribe(() => this.updateErrorMessagePlayerQuantity());
-
     merge(this.word.statusChanges, this.word.valueChanges)
       .pipe(takeUntilDestroyed())
       .subscribe(() => this.updateErrorMessageWord());
-  }
-
-  updateErrorMessagePlayerQuantity() {
-    if (this.playerQuantity.hasError('required')) {
-      this.errorMessagePlayerQuantity.set('You must enter a number');
-    } else if (this.playerQuantity.hasError('min')) {
-      this.errorMessagePlayerQuantity.set('You need 3 or more players');
-    } else {
-      this.errorMessagePlayerQuantity.set('');
-    }
   }
 
   updateErrorMessageWord() {
@@ -82,11 +68,14 @@ export class Dictionary {
 
   nextStage() {
     switch (this.gameStage()) {
+      case this.enum.SettingPlayers:
+        if (this.playerListComponent?.canContinue()) {
+          this.gameStage.set(this.enum.SettingWord); 
+        }
+        break;      
       case this.enum.SettingWord:
         if (
-          this.playerQuantity.value &&
           this.word.value &&
-          this.errorMessagePlayerQuantity().length == 0 &&
           this.errorMessageWord().length == 0
         ) {
           this.getMeaning().then(() => {
@@ -107,7 +96,6 @@ export class Dictionary {
 
       case this.enum.ShowingResult:
         this.word.reset();
-        this.playerQuantity.reset();
         this.gameStage.set(this.enum.SettingWord);
         break;
     }

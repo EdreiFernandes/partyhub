@@ -1,0 +1,20 @@
+<h2>Defina os jogadores</h2>
+
+<mat-form-field>
+  <mat-label>Nome do jogador</mat-label>
+  <input type="text" matInput [formControl]="playerName" required />
+  <button matIconButton matSuffix (click)="addPlayer()">
+    <mat-icon>person_add</mat-icon>
+  </button>
+</mat-form-field>
+
+<div>
+  @for (player of playersList(); track player) {
+  <div>
+    <span>{{ player }}</span>
+    <button matIconButton matSuffix (click)="removePlayer(player)">
+      <mat-icon>person_remove</mat-icon>
+    </button>
+  </div>
+  }
+</div>
