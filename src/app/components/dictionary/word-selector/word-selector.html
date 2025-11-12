@@ -1,0 +1,16 @@
+<mat-form-field>
+    <mat-label>Palavra do jogo</mat-label>
+    <input
+      matInput
+      [formControl]="word"
+      required
+    />
+    <button
+      matIconButton
+      matSuffix
+      (click)="getRandomWord()"
+      [attr.aria-label]="'Get a random word'"
+    >
+      <mat-icon>autorenew</mat-icon>
+    </button>
+  </mat-form-field>

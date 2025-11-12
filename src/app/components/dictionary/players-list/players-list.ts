@@ -14,7 +14,6 @@ import { DictionaryGameStage } from '../../../interfaces/dictionary-game-stage';
 })
 export class PlayersList implements DictionaryGameStage {
   minimumPlayers: number = 3;
-  canContinue = signal<boolean>(false);
   playersList = signal<string[]>([]);
 
   readonly playerName = new FormControl('', [
@@ -27,8 +26,6 @@ export class PlayersList implements DictionaryGameStage {
 
       this.playersList.update(players => [...players, playerNameValue]);
       this.playerName.reset();
-      
-      this.setCanContinue();
     }
   }
 
@@ -44,12 +41,11 @@ export class PlayersList implements DictionaryGameStage {
     return !playerExists;
   }
 
-  setCanContinue(){
-    this.canContinue.set(this.playersList().length >= this.minimumPlayers);
+  canContinue(): boolean{
+    return this.playersList().length >= this.minimumPlayers;
   }
 
   removePlayer(player: string) {
     this.playersList.update(players => players.filter(p => p !== player));
-    this.setCanContinue();
   }
 }

@@ -1,23 +1,15 @@
-import { Component, signal, ViewChild } from '@angular/core';
-import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { Component, signal, ViewChild, viewChildren } from '@angular/core';
 import {
-  FormControl,
   FormsModule,
   ReactiveFormsModule,
-  Validators,
 } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
-import { merge } from 'rxjs';
 import { PlayersList } from '../../../components/dictionary/players-list/players-list';
 import { DictionaryGameStage } from '../../../interfaces/dictionary-game-stage';
-
-export interface DictionaryData {
-  playersQuantity: string;
-  tip: string;
-}
+import { WordSelector } from "../../../components/dictionary/word-selector/word-selector";
 
 enum GameStage {
   SettingPlayers,
@@ -37,34 +29,17 @@ enum GameStage {
     MatButtonModule,
     MatIconModule,
     PlayersList,
-  ],
+    WordSelector
+],
   templateUrl: './dictionary.html',
   styleUrl: './dictionary.css',
 })
 export class Dictionary {
   @ViewChild(PlayersList) playerListComponent!: DictionaryGameStage;
-
-  readonly word = new FormControl('', [Validators.required]);
-  errorMessageWord = signal('');
-  wordMeaning = signal('');
+  @ViewChild(WordSelector) wordSelectorComponent!: DictionaryGameStage;
 
   enum = GameStage;
-
-  gameStage = signal(GameStage.SettingPlayers);
-
-  constructor() {
-    merge(this.word.statusChanges, this.word.valueChanges)
-      .pipe(takeUntilDestroyed())
-      .subscribe(() => this.updateErrorMessageWord());
-  }
-
-  updateErrorMessageWord() {
-    if (this.word.hasError('required')) {
-      this.errorMessageWord.set('You must enter a number');
-    } else {
-      this.errorMessageWord.set('');
-    }
-  }
+  gameStage = signal(GameStage.SettingWord); //update do SettingPlayers
 
   nextStage() {
     switch (this.gameStage()) {
@@ -72,17 +47,11 @@ export class Dictionary {
         if (this.playerListComponent?.canContinue()) {
           this.gameStage.set(this.enum.SettingWord); 
         }
-        break;      
+        break;
+
       case this.enum.SettingWord:
-        if (
-          this.word.value &&
-          this.errorMessageWord().length == 0
-        ) {
-          this.getMeaning().then(() => {
-            if (this.wordMeaning().length) {
-              this.gameStage.set(this.enum.GivingMeaning);
-            }
-          });
+        if (this.wordSelectorComponent?.canContinue()) {
+          this.gameStage.set(this.enum.GivingMeaning);
         }
         break;
 
@@ -95,34 +64,8 @@ export class Dictionary {
         break;
 
       case this.enum.ShowingResult:
-        this.word.reset();
         this.gameStage.set(this.enum.SettingWord);
         break;
     }
-  }
-
-  async getMeaning(): Promise<any> {
-    const request = new Request(
-      'https://api.dicionario-aberto.net/word/' + this.word.value,
-      {
-        method: 'GET',
-      }
-    );
-
-    const res = await fetch(request);
-    const res_1 = await res.json();
-    return this.wordMeaning.set(res_1[0].xml);
-  }
-
-  clickEvent(event: MouseEvent) {
-    const request = new Request('https://api.dicionario-aberto.net/random', {
-      method: 'GET',
-    });
-
-    fetch(request)
-      .then((res) => res.json())
-      .then((res) => this.word.setValue(res.word));
-
-    event.stopPropagation();
   }
 }

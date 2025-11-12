@@ -3,37 +3,20 @@
     @case (enum.SettingPlayers) {
       <app-players-list></app-players-list>
     }
+    @case (enum.SettingWord) {
+      <app-word-selector></app-word-selector>
+    } 
 
-
-  @case (enum.SettingWord) {
-  <mat-form-field>
-    <mat-label>Palavra do jogo</mat-label>
-    <input
-      matInput
-      [formControl]="word"
-      (blur)="updateErrorMessageWord()"
-      required
-    />
-    <button
-      matIconButton
-      matSuffix
-      (click)="clickEvent($event)"
-      [attr.aria-label]="'Get a random word'"
-    >
-      <mat-icon>autorenew</mat-icon>
-    </button>
-  </mat-form-field>
-
-  } @case (enum.GivingMeaning) {
+  @case (enum.GivingMeaning) {
   <h2>Players meaning</h2>
   } @case (enum.Voting) {
   <h2>Players Voting</h2>
   } @case (enum.ShowingResult) {
   <h1>
     Jogando dicionario com 8 pessoas e com a palavra
-    {{ word.value }}
+    word
   </h1>
-  <h2>{{ wordMeaning() }}</h2>
+  <h2>wordMeaning</h2>
   } }
 
   <button matButton="filled" (click)="nextStage()">Ok</button>
